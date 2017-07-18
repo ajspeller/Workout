@@ -2,6 +2,7 @@ package com.ajspeller.workout;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,14 @@ public class WorkoutDetailFragment extends Fragment {
 
     public WorkoutDetailFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            workoutId = savedInstanceState.getLong("workoutId");
+        }
     }
 
     @Override
@@ -43,5 +52,11 @@ public class WorkoutDetailFragment extends Fragment {
             TextView description = view.findViewById(R.id.textDescription);
             description.setText(workout.getDescription());
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putLong("workoutId", workoutId);
     }
 }
