@@ -110,7 +110,7 @@ public class StopwatchFragment extends Fragment implements View.OnClickListener 
                 if (running) {
                     seconds++;
                 }
-                handler.postDelayed(this, 100);
+                handler.postDelayed(this, 1000);
 
             }
         });
